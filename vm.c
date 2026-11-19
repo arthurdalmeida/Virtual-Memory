@@ -39,5 +39,24 @@ int main(int argc, char *argv[]){
         exit(1);
     }
 
+    int endereco = 0;
+
+    while (fscanf(arqAddresses, "%d", &endereco) == 1){
+        if (endereco > 65535 || endereco < 0){
+            fprintf(stderr, "o endereco %d está fora do intervalo de 0 a 65535\n", endereco);
+            exit(1);
+        }
+
+        int pagina = endereco / 256;
+        int offset = endereco % 256;
+
+        printf("%d, %d> %d\n", endereco, pagina, offset);
+    }
+
+    if (!feof(arqAddresses)){
+        fprintf(stderr, "o arquivo %s esta com formato invalido\n", argv[1]);
+        exit(1);
+    }
+
     return 0;
 }

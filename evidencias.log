@@ -23,3 +23,22 @@ Script started on 2026-11-19 14:44:54-03:00 [TERM="xterm-256color" TTY="/dev/pts
 [?2004lexit
 
 Script done on 2026-11-19 14:46:02-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-11-19 15:26:20-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="87" LINES="23"]
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ pwd
+[?2004l/mnt/c/Users/almei/VM/Virtual-Memory
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ whoami
+[?2004larthuralmeida
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ date
+[?2004lThu Nov 19 15:26:25 -03 2026
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm addresses.txt lru fifo [27m[7m|[27m[7m head -3[27m[A]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ ./vm addresses.txt lru fifo | head -3
+[?2004l16916, 66> 20
+62493, 244> 29
+30198, 117> 246
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm ruim.txt lru fifo[27m./vm ruim.txt lru fifo
+[?2004lo arquivo ruim.txt nao abriu
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm grande.txt lru fifo[27m./vm grande.txt lru fifo
+[?2004lo arquivo grande.txt nao abriu
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ date[K[K[K[Kexit
+[?2004lexit
+
+Script done on 2026-11-19 15:27:02-03:00 [COMMAND_EXIT_CODE="1"]
