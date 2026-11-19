@@ -1,0 +1,25 @@
+Script started on 2026-11-19 14:44:54-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="87" LINES="12"]
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ pwd
+[?2004l/mnt/c/Users/almei/VM/Virtual-Memory
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ whoami
+[?2004larthuralmeida
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ date
+[?2004lThu Nov 19 14:45:00 -03 2026
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ ./vm
+[?2004lA entrada deve ser: ./vm <arq> <fifo|lru> <fifo|lru>
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm addresses.txt[27m./vm addresses.txt
+[?2004lA entrada deve ser: ./vm <arq> <fifo|lru> <fifo|lru>
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm addresses.txt lru[27m./vm addresses.txt lru
+[?2004lA entrada deve ser: ./vm <arq> <fifo|lru> <fifo|lru>
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm addresses.txt xyz fifo[27m./vm addresses.txt xyz fifo
+[?2004lEsse algoritmo de pagina e invalido
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm addresses.txt lru abc[27m./vm addresses.txt lru abc
+[?2004lEsse algoritmo da TLB e invalido
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm naoexiste.txt lru fifo[27m./vm naoexiste.txt lru fifo
+[?2004lo arquivo naoexiste.txt nao abriu
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm addresses.txt lru fifo[27m./vm addresses.txt lru fifo
+[?2004l[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm teste.txt fifo lru[27m./vm teste.txt fifo lru
+[?2004l[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ exit
+[?2004lexit
+
+Script done on 2026-11-19 14:46:02-03:00 [COMMAND_EXIT_CODE="0"]
