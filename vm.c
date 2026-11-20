@@ -3,15 +3,41 @@
 #include <string.h>
 
     int tabelaPag[256];
-    signed char memoria[256][256];
+    signed char memoria[128][256];
     int proxFrame = 0;
+    int tempoAtual = 0;
+    int responsavelFrame[128];
+    int horarioDaChegada[128];
+
+    int achaVitima(int tempos[], int tamanho){
+        int vitima = 0;
+
+        for (int i=0; i<tamanho; i++){
+            if (tempos[i] < tempos[vitima]){
+                vitima = i;
+            }
+        }
+
+        return vitima;
+    }
 
     int loadPagina(int pagina, FILE *backing){
-        fseek(backing, pagina*256, SEEK_SET);
-        fread(memoria[proxFrame], 1, 256, backing);
-        tabelaPag[pagina] = proxFrame;
+        int destino = 0;
+        if (proxFrame < 128){
+            destino = proxFrame++;
+        }
+        else{
+            destino = achaVitima(horarioDaChegada, 128);
+            tabelaPag[responsavelFrame[destino]] = -1;
+        }
 
-        return proxFrame++;
+        fseek(backing, pagina*256, SEEK_SET);
+        fread(memoria[destino], 1, 256, backing);
+        tabelaPag[pagina] = destino;
+        responsavelFrame[destino] = pagina;
+        horarioDaChegada[destino] = tempoAtual;
+
+        return destino;
     }
 
 int main(int argc, char *argv[]){
@@ -66,6 +92,8 @@ int main(int argc, char *argv[]){
             fprintf(stderr, "o endereco %d está fora do intervalo de 0 a 65535\n", endereco);
             exit(1);
         }
+
+        tempoAtual++;
 
         int pagina = endereco / 256;
         int offset = endereco % 256;
