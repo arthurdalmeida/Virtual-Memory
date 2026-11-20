@@ -8,6 +8,8 @@
     int tempoAtual = 0;
     int responsavelFrame[128];
     int horarioDaChegada[128];
+    int ultimoUso[128];
+    int modoLRU = 0;
 
     int achaVitima(int tempos[], int tamanho){
         int vitima = 0;
@@ -27,7 +29,12 @@
             destino = proxFrame++;
         }
         else{
-            destino = achaVitima(horarioDaChegada, 128);
+            if (modoLRU == 1){
+                destino = achaVitima(ultimoUso, 128);
+            }
+            else{
+                destino = achaVitima(horarioDaChegada, 128);
+            }
             tabelaPag[responsavelFrame[destino]] = -1;
         }
 
@@ -55,6 +62,8 @@ int main(int argc, char *argv[]){
         fprintf(stderr, "Esse algoritmo da TLB e invalido\n");
         exit(1);        
     }
+
+    if (strcmp(argv[2], "lru") == 0) modoLRU = 1;
 
     FILE *arqAddresses = fopen(argv[1], "r");
 
@@ -104,6 +113,8 @@ int main(int argc, char *argv[]){
             qtdFaults++;
             frame = loadPagina(pagina, arqBacking);
         }
+
+        ultimoUso[frame] = tempoAtual;
 
         int conteudo = memoria[frame][offset];
         int endFisico = frame*256 + offset;
