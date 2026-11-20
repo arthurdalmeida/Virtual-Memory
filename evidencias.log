@@ -42,3 +42,88 @@ Script started on 2026-11-19 15:26:20-03:00 [TERM="xterm-256color" TTY="/dev/pts
 [?2004lexit
 
 Script done on 2026-11-19 15:27:02-03:00 [COMMAND_EXIT_CODE="1"]
+Script started on 2026-11-20 11:37:21-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="87" LINES="22"]
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ pwd
+[?2004l/mnt/c/Users/almei/VM/Virtual-Memory
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ whoami
+[?2004larthuralmeida
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ date
+[?2004lFri Nov 20 11:37:31 -03 2026
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ make
+[?2004lcc -Wall -o vm vm.c -pthread
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm[27m./vm
+[?2004lA entrada deve ser: ./vm <arq> <fifo|lru> <fifo|lru>
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm addresses.txt lru[27m./vm addresses.txt lru
+[?2004lA entrada deve ser: ./vm <arq> <fifo|lru> <fifo|lru>
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm addresses.txt xyz fifo[27m./vm addresses.txt xyz fifo
+[?2004lEsse algoritmo de pagina e invalido
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm addresses.txt lru abc[27m./vm addresses.txt lru abc
+[?2004lEsse algoritmo da TLB e invalido
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm naoexiste.txt lru fifo[27m./vm naoexiste.txt lru fifo
+[?2004lo arquivo naoexiste.txt nao abriu
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7mprintf "100\nabc\n200\n" > r[27m[7mu[27m[7mim.txt[27m[A]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ printf "100\nabc\n200\n" > ruim.txt
+[?2004l[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7mecho 70000 > grande.txt[27mecho 70000 > grande.txt
+[?2004l[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7mtouch vazio.txt[27mtouch vazio.txt
+[?2004l[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm ruim.txt lru fifo[27m./vm ruim.txt lru fifo
+[?2004lo arquivo ruim.txt esta com formato invalido
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm grande.txt lru fifo[27m./vm grande.txt lru fifo
+[?2004lo endereco 70000 está fora do intervalo de 0 a 65535
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm vazio.txt lru fifo[27m./vm vazio.txt lru fifo
+[?2004l[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm addresses.txt lru fifo[27m./vm addresses.txt lru fifo
+[?2004lSegmentation fault (core dumped)
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7mhead -3 correct.txt[27mhead -3 correct.txt
+[?2004lVirtual address: 16916 TLB: 0 Physical address: -236 Value: -1
+Virtual address: 62493 TLB: 0 Physical address: -227 Value: -1
+Virtual address: 30198 TLB: 0 Physical address: -10 Value: -1
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7mtail -5 correct.txt[27mtail -5 correct.txt
+[?2004lVirtual address: 41713 TLB: 0 Physical address: -15 Value: -1
+Virtual address: 33890 TLB: 0 Physical address: -158 Value: -1
+Virtual address: 4894 TLB: 0 Physical address: -226 Value: -1
+Virtual address: 57599 TLB: 0 Physical address: -1 Value: -1
+Virtual address: 3870 TL[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ exit
+[?2004lexit
+
+Script done on 2026-11-20 11:39:40-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-11-20 12:05:37-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="87" LINES="16"]
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ pwd
+[?2004l/mnt/c/Users/almei/VM/Virtual-Memory
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ whoami
+[?2004larthuralmeida
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ date
+[?2004lFri Nov 20 12:05:42 -03 2026
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ make
+[?2004lcc -Wall -o vm vm.c -pthread
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm[27m./vm
+[?2004lA entrada deve ser: ./vm <arq> <fifo|lru> <fifo|lru>
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm addresses.txt lru[27m./vm addresses.txt lru
+[?2004lA entrada deve ser: ./vm <arq> <fifo|lru> <fifo|lru>
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm addresses.txt xyz fifo[27m./vm addresses.txt xyz fifo
+[?2004lEsse algoritmo de pagina e invalido
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm addresses.txt lru abc[27m./vm addresses.txt lru abc
+[?2004lEsse algoritmo da TLB e invalido
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm naoexiste.txt lru fifo[27m./vm naoexiste.txt lru fifo
+[?2004lo arquivo naoexiste.txt nao abriu
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7mprintf "100\nabc\n200\n" > r[27m[7mu[27m[7mim.txt[27m[A]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ printf "100\nabc\n200\n" > ruim.txt
+[?2004l[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7mecho 70000 > grande.txt[27mecho 70000 > grande.txt
+[?2004l[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7mtouch vazio.txt[27mtouch vazio.txt
+[?2004l[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm ruim.txt lru fifo[27m./vm ruim.txt lru fifo
+[?2004lo arquivo ruim.txt esta com formato invalido
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm grande.txt lru fifo[27m./vm grande.txt lru fifo
+[?2004lo endereco 70000 está fora do intervalo de 0 a 65535
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm vazio.txt lru fifo[27m./vm vazio.txt lru fifo
+[?2004lvazio.txt nao tem nenhum endereco
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7m./vm addresses.txt lru fifo[27m./vm addresses.txt lru fifo
+[?2004l[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7mhead -3 correct.txt[27mhead -3 correct.txt
+[?2004lVirtual address: 16916 TLB: 0 Physical address: 20 Value: 0
+Virtual address: 62493 TLB: 0 Physical address: 285 Value: 0
+Virtual address: 30198 TLB: 0 Physical address: 758 Value: 29
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ [7mtail -5 correct.txt[27mtail -5 correct.txt
+[?2004lNumber of Translated Addresses = 1000
+Page Faults = 244
+Page Fault Rate = 0.244
+TLB Hits = 0
+TLB Hit Rate = 0.000
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/VM/Virtual-Memory[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/VM/Virtual-Memory[00m$ exit
+[?2004lexit
+
+Script done on 2026-11-20 12:07:33-03:00 [COMMAND_EXIT_CODE="0"]

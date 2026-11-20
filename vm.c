@@ -2,6 +2,18 @@
 #include <stdlib.h>
 #include <string.h>
 
+    int tabelaPag[256];
+    signed char memoria[256][256];
+    int proxFrame = 0;
+
+    int loadPagina(int pagina, FILE *backing){
+        fseek(backing, pagina*256, SEEK_SET);
+        fread(memoria[proxFrame], 1, 256, backing);
+        tabelaPag[pagina] = proxFrame;
+
+        return proxFrame++;
+    }
+
 int main(int argc, char *argv[]){
     if (argc != 4){
         fprintf(stderr, "A entrada deve ser: ./vm <arq> <fifo|lru> <fifo|lru>\n");
@@ -41,6 +53,14 @@ int main(int argc, char *argv[]){
 
     int endereco = 0;
 
+    
+    for (int i=0; i<256; i++){
+        tabelaPag[i] = -1;
+    }
+
+    int qtdFaults = 0;
+    int qtdLidos = 0;
+
     while (fscanf(arqAddresses, "%d", &endereco) == 1){
         if (endereco > 65535 || endereco < 0){
             fprintf(stderr, "o endereco %d está fora do intervalo de 0 a 65535\n", endereco);
@@ -49,14 +69,40 @@ int main(int argc, char *argv[]){
 
         int pagina = endereco / 256;
         int offset = endereco % 256;
+        
+        int frame = tabelaPag[pagina];
 
-        printf("%d, %d> %d\n", endereco, pagina, offset);
+        if (tabelaPag[pagina] == -1){
+            qtdFaults++;
+            frame = loadPagina(pagina, arqBacking);
+        }
+
+        int conteudo = memoria[frame][offset];
+        int endFisico = frame*256 + offset;
+        
+        fprintf(arqSaida, "Virtual address: %d TLB: %d Physical address: %d Value: %d\n", endereco, 0, endFisico, conteudo);
+        qtdLidos++;
     }
-
+    
     if (!feof(arqAddresses)){
         fprintf(stderr, "o arquivo %s esta com formato invalido\n", argv[1]);
         exit(1);
     }
+
+    if (qtdLidos == 0){
+        fprintf(stderr, "%s nao tem nenhum endereco\n", argv[1]);
+        exit(1);
+    }
+
+    fprintf(arqSaida, "Number of Translated Addresses = %d\n", qtdLidos);
+    fprintf(arqSaida, "Page Faults = %d\n", qtdFaults);
+    fprintf(arqSaida, "Page Fault Rate = %.3f\n", (double) qtdFaults/qtdLidos);
+    fprintf(arqSaida, "TLB Hits = %d\n", 0);
+    fprintf(arqSaida, "TLB Hit Rate = %.3f\n", 0.0);
+
+    fclose(arqAddresses);
+    fclose(arqBacking);
+    fclose(arqSaida);
 
     return 0;
 }
