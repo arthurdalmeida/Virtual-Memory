@@ -11,6 +11,21 @@
     int ultimoUso[128];
     int modoLRU = 0;
 
+    int paginaTLB[16];
+    int horaChegadaTLB[16];
+    int frameTLB[16];
+    int ultimoUsoTLB[16];
+    int modoLruTLB = 0;
+
+    int procuraTLB(int pagina){
+        for (int i=0; i<16; i++){
+            if (paginaTLB[i] == pagina){
+                return i;
+            }
+        }
+        return -1;
+    }
+
     int achaVitima(int tempos[], int tamanho){
         int vitima = 0;
 
@@ -36,6 +51,11 @@
                 destino = achaVitima(horarioDaChegada, 128);
             }
             tabelaPag[responsavelFrame[destino]] = -1;
+            for (int i=0; i<16; i++){
+                if (paginaTLB[i] == responsavelFrame[destino]){
+                    paginaTLB[i] = -1;
+                }
+            }
         }
 
         fseek(backing, pagina*256, SEEK_SET);
@@ -45,6 +65,33 @@
         horarioDaChegada[destino] = tempoAtual;
 
         return destino;
+    }
+
+    int insereTLB(int pagina, int frame){
+        int posicao = -1;
+
+        for (int i=0; i<16; i++){
+            if (paginaTLB[i] == -1){
+                posicao = i;
+                break;
+            }
+        }
+
+        if (posicao == -1){
+            if (modoLruTLB == 1){
+                posicao = achaVitima(ultimoUsoTLB, 16);
+            }
+            else{
+                posicao = achaVitima(horaChegadaTLB, 16);
+            }
+        }
+
+        paginaTLB[posicao] = pagina;
+        frameTLB[posicao] = frame;
+        horaChegadaTLB[posicao] = tempoAtual;
+        ultimoUsoTLB[posicao] = tempoAtual;
+
+        return posicao;
     }
 
 int main(int argc, char *argv[]){
@@ -64,6 +111,7 @@ int main(int argc, char *argv[]){
     }
 
     if (strcmp(argv[2], "lru") == 0) modoLRU = 1;
+    if (strcmp(argv[3], "lru") == 0) modoLruTLB = 1;
 
     FILE *arqAddresses = fopen(argv[1], "r");
 
@@ -93,8 +141,13 @@ int main(int argc, char *argv[]){
         tabelaPag[i] = -1;
     }
 
+    for (int i=0; i<16; i++){
+        paginaTLB[i] = -1;
+    }
+
     int qtdFaults = 0;
     int qtdLidos = 0;
+    int qtdAcertosTLB = 0;
 
     while (fscanf(arqAddresses, "%d", &endereco) == 1){
         if (endereco > 65535 || endereco < 0){
@@ -106,20 +159,33 @@ int main(int argc, char *argv[]){
 
         int pagina = endereco / 256;
         int offset = endereco % 256;
-        
+
+        int posicaoTLB = procuraTLB(pagina);
         int frame = tabelaPag[pagina];
 
-        if (tabelaPag[pagina] == -1){
-            qtdFaults++;
-            frame = loadPagina(pagina, arqBacking);
+        if (posicaoTLB != -1){
+            qtdAcertosTLB++;
+            frame = frameTLB[posicaoTLB];
+            ultimoUsoTLB[posicaoTLB] = tempoAtual;
         }
+        else{
+            frame = tabelaPag[pagina];
+
+            if (tabelaPag[pagina] == -1){
+                qtdFaults++;
+                frame = loadPagina(pagina, arqBacking);
+            }
+
+            posicaoTLB = insereTLB(pagina, frame);
+        }
+        
 
         ultimoUso[frame] = tempoAtual;
 
         int conteudo = memoria[frame][offset];
         int endFisico = frame*256 + offset;
         
-        fprintf(arqSaida, "Virtual address: %d TLB: %d Physical address: %d Value: %d\n", endereco, 0, endFisico, conteudo);
+        fprintf(arqSaida, "Virtual address: %d TLB: %d Physical address: %d Value: %d\n", endereco, posicaoTLB, endFisico, conteudo);
         qtdLidos++;
     }
     
@@ -136,8 +202,8 @@ int main(int argc, char *argv[]){
     fprintf(arqSaida, "Number of Translated Addresses = %d\n", qtdLidos);
     fprintf(arqSaida, "Page Faults = %d\n", qtdFaults);
     fprintf(arqSaida, "Page Fault Rate = %.3f\n", (double) qtdFaults/qtdLidos);
-    fprintf(arqSaida, "TLB Hits = %d\n", 0);
-    fprintf(arqSaida, "TLB Hit Rate = %.3f\n", 0.0);
+    fprintf(arqSaida, "TLB Hits = %d\n", qtdAcertosTLB);
+    fprintf(arqSaida, "TLB Hit Rate = %.3f\n", (double)qtdAcertosTLB/qtdLidos);
 
     fclose(arqAddresses);
     fclose(arqBacking);
