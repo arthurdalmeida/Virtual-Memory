@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <pthread.h>
 
     int tabelaPag[256];
     signed char memoria[128][256];
@@ -17,13 +18,32 @@
     int ultimoUsoTLB[16];
     int modoLruTLB = 0;
 
-    int procuraTLB(int pagina){
-        for (int i=0; i<16; i++){
-            if (paginaTLB[i] == pagina){
-                return i;
-            }
+    int paginaProcurada = 0;
+    int posicaoAchada = 0;
+    int indices[16];
+
+    void *checarEntrada(void *arg){
+        int i= *(int*)arg;
+        if (paginaTLB[i] == paginaProcurada){
+            posicaoAchada = i;
         }
-        return -1;
+        return NULL;
+    }
+
+    int procuraTLB(int pagina){
+        paginaProcurada = pagina;
+        posicaoAchada = -1;
+        pthread_t threads[16];
+
+        for (int i=0; i<16; i++){
+            pthread_create(&threads[i], NULL, checarEntrada, &indices[i]);
+        }
+
+        for (int i=0; i<16; i++){
+            pthread_join(threads[i], NULL);
+        }
+
+        return posicaoAchada;
     }
 
     int achaVitima(int tempos[], int tamanho){
@@ -143,6 +163,7 @@ int main(int argc, char *argv[]){
 
     for (int i=0; i<16; i++){
         paginaTLB[i] = -1;
+        indices[i] = i;
     }
 
     int qtdFaults = 0;
@@ -152,6 +173,8 @@ int main(int argc, char *argv[]){
     while (fscanf(arqAddresses, "%d", &endereco) == 1){
         if (endereco > 65535 || endereco < 0){
             fprintf(stderr, "o endereco %d está fora do intervalo de 0 a 65535\n", endereco);
+            fclose(arqSaida);
+            remove("correct.txt");
             exit(1);
         }
 
@@ -191,11 +214,15 @@ int main(int argc, char *argv[]){
     
     if (!feof(arqAddresses)){
         fprintf(stderr, "o arquivo %s esta com formato invalido\n", argv[1]);
+        fclose(arqSaida);
+        remove("correct.txt");
         exit(1);
     }
 
     if (qtdLidos == 0){
         fprintf(stderr, "%s nao tem nenhum endereco\n", argv[1]);
+        fclose(arqSaida);
+        remove("correct.txt");
         exit(1);
     }
 
